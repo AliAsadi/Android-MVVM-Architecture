@@ -7,23 +7,10 @@
 2. **ui**: View classes along with their corresponding Presenters.
 4. **utils**: Utility classes.
 
-#### Key points
-* Using base abstract classes to support MVP methodology while
-  avoiding Activity leaks by releasing the view when it's no longer needed 
-  ,BasePresenter repsonsable to destroy the view onActivityDestory().
-* BaseActivity by default initialize the Presenter & DataManager.
-
 #### Library
 * LiveData
 * ViewModel
 
---------------------------------------------------------------------------------------------
 
 **Happy Coding!!!** ![](https://i.imgur.com/rneCZCN.png)
 
---------------------------------------------------------------------------------------------
-
-### License
-```
-~ MIT
-```
