@@ -1,6 +1,6 @@
 
 
-### A basic sample android application to understand MVVM in a very simple way. Just clone, build, run and understand MVVM.
+### A basic sample android application to understand MVVM in a very simple way.
 
 #### The app has following packages:
 1. **data**: It contains all the data accessing and manipulating components.
