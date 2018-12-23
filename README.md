@@ -1,4 +1,4 @@
-# Android MVP Architecture
+
 
 ### A basic sample android application to understand MVVM in a very simple way. Just clone, build, run and understand MVVM.
 
