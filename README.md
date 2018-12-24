@@ -7,7 +7,7 @@
 2. **ui**: View classes along with their corresponding ViewModel.
 4. **utils**: Utility classes.
 
-#### Library
+#### Using Architecture Components
 * LiveData
 * ViewModel
 
