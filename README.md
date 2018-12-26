@@ -1,6 +1,8 @@
 
 
 ### A basic sample android application to understand MVVM in a very simple way.
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-android--mvvm--sample--app-green.svg?style=flat )]( https://android-arsenal.com/details/1/7403 )
+
 
 #### The app has following packages:
 1. **data**: It contains all the data accessing and manipulating components.
