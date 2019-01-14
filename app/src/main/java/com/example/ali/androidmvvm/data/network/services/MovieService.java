@@ -16,7 +16,14 @@ public class MovieService {
 
     private MovieApi mMovieApi;
 
-    public MovieService() {
+    private static MovieService instance;
+
+
+    public static MovieService getInstance() {
+        return instance;
+    }
+
+    private MovieService() {
         Retrofit mRetrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(URL).build();
         mMovieApi = mRetrofit.create(MovieApi.class);
     }
@@ -25,7 +32,7 @@ public class MovieService {
         return mMovieApi;
     }
 
-    public interface MovieApi {
+    private interface MovieApi {
         @GET("movies/") Call<MovieResponse> getAllMovie();
     }
 

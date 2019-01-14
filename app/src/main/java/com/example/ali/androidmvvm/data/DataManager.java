@@ -34,7 +34,7 @@ public class DataManager {
     }
 
     public MovieService getMovieService() {
-        return new MovieService();
+        return MovieService.getInstance();
     }
 
 }
