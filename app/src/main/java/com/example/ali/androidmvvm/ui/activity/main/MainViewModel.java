@@ -26,26 +26,26 @@ public class MainViewModel extends ViewModel {
 
     private MovieService.MovieApi movieRepository;
 
-    public MainViewModel(MovieService.MovieApi movieApi) {
+    MainViewModel(MovieService.MovieApi movieApi) {
         this.movieRepository = movieApi;
         movieList = new MutableLiveData<>();
         isLoading = new MutableLiveData<>();
     }
 
-    public MutableLiveData<List<Movie>> getMovies() {
+    MutableLiveData<List<Movie>> getMovies() {
         return movieList;
     }
-    public MutableLiveData<Boolean> getLoadingStatus() {
+    MutableLiveData<Boolean> getLoadingStatus() {
         return isLoading;
     }
 
-    public void loadMoviesNetwork() {
+    void loadMoviesNetwork() {
         setIsLoading(true);
 
         Call<MovieResponse> movieCall = movieRepository.getAllMovie();
         movieCall.enqueue(new MovieCallback());
     }
-    public void loadMovieLocal() {
+    void loadMovieLocal() {
         setIsLoading(true);
 
         String name = "Breaking Bad";
@@ -57,23 +57,14 @@ public class MainViewModel extends ViewModel {
         movies.add(new Movie(name,image,name));
         setMovies(movies);
     }
+    void showEmptyList() { setMovies(Collections.<Movie>emptyList()); }
 
-    public void setIsLoading(boolean loading) {
+    private void setIsLoading(boolean loading) {
         isLoading.postValue(loading);
     }
-    public void setMovies(List<Movie> movies) {
+    private void setMovies(List<Movie> movies) {
         setIsLoading(false);
         movieList.postValue(movies);
-    }
-
-    public void onLocalButtonClick() {
-        loadMovieLocal();
-    }
-    public void onNetworkButtonClick() {
-        loadMoviesNetwork();
-    }
-    public void onEmptyButtonClick() {
-        setMovies(Collections.<Movie>emptyList());
     }
 
     /**

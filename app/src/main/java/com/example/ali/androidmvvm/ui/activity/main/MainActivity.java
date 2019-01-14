@@ -63,17 +63,17 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
 
     @OnClick(R.id.network)
     void onNetworkButtonClick() {
-        viewModel.onNetworkButtonClick();
+        viewModel.loadMoviesNetwork();
     }
 
     @OnClick(R.id.local)
     void onLocalButtonClick() {
-        viewModel.onLocalButtonClick();
+        viewModel.loadMovieLocal();
     }
 
     @OnClick(R.id.empty)
     void onEmptyButtonClick() {
-        viewModel.onEmptyButtonClick();
+        viewModel.showEmptyList();
     }
 
     @Override
