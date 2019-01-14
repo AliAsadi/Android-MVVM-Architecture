@@ -12,7 +12,7 @@ import com.example.ali.androidmvvm.data.db.entity.LogClass;
  * Created by Ali Esa Assadi on 07/03/2018.
  */
 
-@Database(entities = {LogClass.class}, version = 2)
+@Database(entities = {LogClass.class}, version = 2, exportSchema = false)
 public abstract class LogDatabase extends RoomDatabase {
 
     private static LogDatabase sInstance;

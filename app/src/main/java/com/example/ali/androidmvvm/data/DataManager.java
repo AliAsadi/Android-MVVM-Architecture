@@ -4,7 +4,7 @@ import com.example.ali.androidmvvm.App;
 import com.example.ali.androidmvvm.data.db.database.LogDatabase;
 import com.example.ali.androidmvvm.data.network.services.MovieService;
 import com.preference.PowerPreference;
-import com.preference.utils.PreferenceCreator;
+import com.preference.Preference;
 
 /**
  * Created by Ali Esa Assadi on 26/03/2018.
@@ -25,7 +25,7 @@ public class DataManager {
         return sInstance;
     }
 
-    public PreferenceCreator getPrefs() {
+    public Preference getPrefs() {
         return PowerPreference.defult();
     }
 
