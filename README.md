@@ -9,7 +9,7 @@
 2. **ui**: View classes along with their corresponding ViewModel.
 4. **utils**: Utility classes.
 
-#### Using Architecture Components
+#### Using Jetpack Architecture Components
 * LiveData
 * ViewModel
 
