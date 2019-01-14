@@ -24,10 +24,10 @@ public class MainViewModel extends ViewModel {
     private MutableLiveData<List<Movie>> movieList;
     private MutableLiveData<Boolean> isLoading;
 
-    private MovieService.MovieApi movieRepository;
+    private MovieService movieService;
 
-    MainViewModel(MovieService.MovieApi movieApi) {
-        this.movieRepository = movieApi;
+    MainViewModel(MovieService movieService) {
+        this.movieService = movieService;
         movieList = new MutableLiveData<>();
         isLoading = new MutableLiveData<>();
     }
@@ -42,7 +42,7 @@ public class MainViewModel extends ViewModel {
     void loadMoviesNetwork() {
         setIsLoading(true);
 
-        Call<MovieResponse> movieCall = movieRepository.getAllMovie();
+        Call<MovieResponse> movieCall = movieService.getMovieApi().getAllMovie();
         movieCall.enqueue(new MovieCallback());
     }
     void loadMovieLocal() {

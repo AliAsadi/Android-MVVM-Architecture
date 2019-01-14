@@ -20,6 +20,9 @@ public class MovieService {
 
 
     public static MovieService getInstance() {
+        if (instance == null) {
+            instance = new MovieService();
+        }
         return instance;
     }
 
@@ -32,7 +35,7 @@ public class MovieService {
         return mMovieApi;
     }
 
-    private interface MovieApi {
+    public interface MovieApi {
         @GET("movies/") Call<MovieResponse> getAllMovie();
     }
 

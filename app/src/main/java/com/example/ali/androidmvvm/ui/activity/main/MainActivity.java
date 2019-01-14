@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
     MainViewModel viewModel;
 
     private MainViewModel createViewModel() {
-        MainViewModelFactory factory = new MainViewModelFactory(DataManager.getInstance());
+        MainViewModelFactory factory = new MainViewModelFactory(DataManager.getInstance().getMovieService());
         return ViewModelProviders.of(this, factory).get(MainViewModel.class);
     }
 

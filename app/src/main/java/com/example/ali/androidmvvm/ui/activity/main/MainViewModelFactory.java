@@ -5,23 +5,24 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
 import com.example.ali.androidmvvm.data.DataManager;
+import com.example.ali.androidmvvm.data.network.services.MovieService;
 
 /**
  * Created by Ali Esa Assadi on 19/12/2018.
  */
 public class MainViewModelFactory implements ViewModelProvider.Factory {
 
-    private final DataManager dataManager;
+    private final MovieService movieService;
 
-    public MainViewModelFactory(DataManager dataManager) {
-        this.dataManager = dataManager;
+    public MainViewModelFactory(MovieService movieService) {
+        this.movieService = movieService;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(MainViewModel.class)) {
-            return (T) new MainViewModel(dataManager.getMovieService().getMovieApi());
+            return (T) new MainViewModel(movieService);
         }
 
         throw new IllegalArgumentException("Unknown ViewModel class");
