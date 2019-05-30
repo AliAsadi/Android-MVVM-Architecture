@@ -21,7 +21,7 @@ Just make pull request. You are in!
 
 ### License
 ```
-   Copyright (C) 2018 Ali Esa Assadi
+   Copyright (C) 2018 Ali Asadi
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
