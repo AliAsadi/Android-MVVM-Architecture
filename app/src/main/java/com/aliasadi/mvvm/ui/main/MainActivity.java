@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.aliasadi.mvvm.R;
 import com.aliasadi.mvvm.data.DataManager;
 import com.aliasadi.mvvm.data.network.model.Movie;
+import com.aliasadi.mvvm.ui.base.BaseActivity;
 import com.aliasadi.mvvm.ui.details.DetailsActivity;
 
 import java.util.List;
@@ -26,19 +28,13 @@ import butterknife.OnClick;
  * Created by Ali Asadi on 12/03/2018.
  */
 
-public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMovieAdapter {
+public class MainActivity extends BaseActivity<MainViewModel> implements MovieAdapter.OnMovieAdapter {
 
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
     @BindView(R.id.progress_bar) ProgressBar progressBar;
     @BindView(R.id.empty_view) TextView emptyView;
 
     private MovieAdapter movieAdapter;
-    private MainViewModel viewModel;
-
-    private MainViewModel createViewModel() {
-        MainViewModelFactory factory = new MainViewModelFactory(DataManager.getInstance().getMovieService());
-        return ViewModelProviders.of(this, factory).get(MainViewModel.class);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +45,15 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
         movieAdapter = new MovieAdapter(this);
         recyclerView.setAdapter(movieAdapter);
 
-        viewModel = createViewModel();
-
         viewModel.getLoadingStatus().observe(this, new LoadingObserver());
         viewModel.getMovies().observe(this, new MovieObserver());
+    }
+
+    @NonNull
+    @Override
+    protected MainViewModel createViewModel() {
+        MainViewModelFactory factory = new MainViewModelFactory(DataManager.getInstance().getMovieService());
+        return ViewModelProviders.of(this, factory).get(MainViewModel.class);
     }
 
     @OnClick(R.id.network)

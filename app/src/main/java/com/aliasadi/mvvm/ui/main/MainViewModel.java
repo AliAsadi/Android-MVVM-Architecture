@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import com.aliasadi.mvvm.data.network.model.Movie;
 import com.aliasadi.mvvm.data.network.model.MovieResponse;
 import com.aliasadi.mvvm.data.network.services.MovieService;
+import com.aliasadi.mvvm.ui.base.BaseViewModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,7 +20,7 @@ import retrofit2.Response;
 /**
  * Created by Ali Asadi on 18/12/2018.
  */
-public class MainViewModel extends ViewModel {
+public class MainViewModel extends BaseViewModel {
 
     private MutableLiveData<List<Movie>> movies;
     private MutableLiveData<Boolean> isLoading;

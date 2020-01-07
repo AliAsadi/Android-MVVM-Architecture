@@ -5,10 +5,11 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.widget.TextView;
+import com.aliasadi.mvvm.ui.base.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.aliasadi.mvvm.R;
 import com.aliasadi.mvvm.data.network.model.Movie;
@@ -19,7 +20,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Ali Asadi on 12/03/2018.
  */
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends BaseActivity<DetailsViewModel> {
 
     private static final String EXTRA_MOVIE = "EXTRA_MOVIE";
 
@@ -33,14 +34,13 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
 
-        DetailsViewModel viewModel = createViewModel();
-
-        viewModel.getMovie().observe(this, new MovieObserver());
-
         viewModel.loadMovieData();
+        viewModel.getMovie().observe(this, new MovieObserver());
     }
 
-    private DetailsViewModel createViewModel() {
+    @NonNull
+    @Override
+    protected DetailsViewModel createViewModel() {
         Movie movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
         DetailsViewModelFactory factory = new DetailsViewModelFactory(movie);
         return ViewModelProviders.of(this,factory).get(DetailsViewModel.class);
