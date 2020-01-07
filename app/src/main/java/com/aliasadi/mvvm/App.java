@@ -4,7 +4,7 @@ import android.app.Application;
 
 
 /**
- * Created by Ali Esa Assadi on 10/03/2018.
+ * Created by Ali Asadi on 10/03/2018.
  */
 public class App extends Application {
 

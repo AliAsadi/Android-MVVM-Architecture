@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
- * Created by Ali Esa Assadi on 07/03/2018.
+ * Created by Ali Asadi on 07/03/2018.
  */
 
 @Entity

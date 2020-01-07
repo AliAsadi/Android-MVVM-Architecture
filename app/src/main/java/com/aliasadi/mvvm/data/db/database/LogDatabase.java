@@ -9,7 +9,7 @@ import com.aliasadi.mvvm.data.db.dao.LogDAO;
 import com.aliasadi.mvvm.data.db.entity.LogClass;
 
 /**
- * Created by Ali Esa Assadi on 07/03/2018.
+ * Created by Ali Asadi on 07/03/2018.
  */
 
 @Database(entities = {LogClass.class}, version = 2, exportSchema = false)

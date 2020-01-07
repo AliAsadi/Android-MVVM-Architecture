@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import com.aliasadi.mvvm.data.network.services.MovieService;
 
 /**
- * Created by Ali Esa Assadi on 19/12/2018.
+ * Created by Ali Asadi on 19/12/2018.
  */
 public class MainViewModelFactory implements ViewModelProvider.Factory {
 

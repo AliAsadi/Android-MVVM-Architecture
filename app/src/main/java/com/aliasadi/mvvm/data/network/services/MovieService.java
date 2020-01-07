@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
 /**
- * Created by Ali Esa Assadi on 26/03/2018.
+ * Created by Ali Asadi on 26/03/2018.
  */
 public class MovieService {
 

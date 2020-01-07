@@ -7,7 +7,7 @@ import com.preference.PowerPreference;
 import com.preference.Preference;
 
 /**
- * Created by Ali Esa Assadi on 26/03/2018.
+ * Created by Ali Asadi on 26/03/2018.
  */
 
 public class DataManager {

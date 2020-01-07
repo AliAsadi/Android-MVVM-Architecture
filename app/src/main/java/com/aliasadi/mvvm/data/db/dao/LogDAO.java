@@ -9,7 +9,7 @@ import com.aliasadi.mvvm.data.db.entity.LogClass;
 import java.util.List;
 
 /**
- * Created by Ali Esa Assadi on 07/03/2018.
+ * Created by Ali Asadi on 07/03/2018.
  */
 
 @Dao

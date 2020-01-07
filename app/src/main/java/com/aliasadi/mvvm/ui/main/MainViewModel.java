@@ -17,7 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by Ali Esa Assadi on 18/12/2018.
+ * Created by Ali Asadi on 18/12/2018.
  */
 public class MainViewModel extends ViewModel {
 

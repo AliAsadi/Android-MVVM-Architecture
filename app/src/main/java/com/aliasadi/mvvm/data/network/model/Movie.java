@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Ali Esa Assadi on 10/03/2018.
+ * Created by Ali Asadi on 10/03/2018.
  */
 public class Movie implements Parcelable{
 

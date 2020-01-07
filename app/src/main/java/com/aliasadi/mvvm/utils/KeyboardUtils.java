@@ -7,7 +7,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 /**
- * Created by Ali Esa Assadi on 28/03/2018.
+ * Created by Ali Asadi on 28/03/2018.
  */
 
 public class KeyboardUtils {
