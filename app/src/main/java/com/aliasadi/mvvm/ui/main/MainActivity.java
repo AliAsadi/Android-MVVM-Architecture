@@ -28,18 +28,12 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMovieAdapter {
 
-    MovieAdapter movieAdapter;
+    @BindView(R.id.recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.progress_bar) ProgressBar progressBar;
+    @BindView(R.id.empty_view) TextView emptyView;
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
-
-    @BindView(R.id.progress_bar)
-    ProgressBar progressBar;
-
-    @BindView(R.id.empty_view)
-    TextView emptyView;
-
-    MainViewModel viewModel;
+    private MovieAdapter movieAdapter;
+    private MainViewModel viewModel;
 
     private MainViewModel createViewModel() {
         MainViewModelFactory factory = new MainViewModelFactory(DataManager.getInstance().getMovieService());
@@ -78,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
 
     @Override
     public void onMovieClicked(Movie movie) {
-        DetailsActivity.start(this,movie);
+        DetailsActivity.start(this, movie);
     }
 
     //Observer
