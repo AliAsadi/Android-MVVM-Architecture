@@ -78,9 +78,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
 
     @Override
     public void onMovieClicked(Movie movie) {
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra("movie", movie);
-        startActivity(intent);
+        DetailsActivity.start(this,movie);
     }
 
     //Observer

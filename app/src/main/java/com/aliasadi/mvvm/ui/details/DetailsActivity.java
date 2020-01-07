@@ -2,6 +2,8 @@ package com.aliasadi.mvvm.ui.details;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +44,12 @@ public class DetailsActivity extends AppCompatActivity {
         Movie movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
         DetailsViewModelFactory factory = new DetailsViewModelFactory(movie);
         return ViewModelProviders.of(this,factory).get(DetailsViewModel.class);
+    }
+
+    public static void start(Context context, Movie movie) {
+        Intent starter = new Intent(context, DetailsActivity.class);
+        starter.putExtra(EXTRA_MOVIE, movie);
+        context.startActivity(starter);
     }
 
     private class MovieObserver implements Observer<Movie> {
