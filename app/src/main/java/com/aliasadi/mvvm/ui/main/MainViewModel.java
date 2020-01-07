@@ -21,19 +21,19 @@ import retrofit2.Response;
  */
 public class MainViewModel extends ViewModel {
 
-    private MutableLiveData<List<Movie>> movieList;
+    private MutableLiveData<List<Movie>> movies;
     private MutableLiveData<Boolean> isLoading;
 
     private MovieService movieService;
 
     MainViewModel(MovieService movieService) {
         this.movieService = movieService;
-        movieList = new MutableLiveData<>();
+        movies = new MutableLiveData<>();
         isLoading = new MutableLiveData<>();
     }
 
     MutableLiveData<List<Movie>> getMovies() {
-        return movieList;
+        return movies;
     }
 
     MutableLiveData<Boolean> getLoadingStatus() {
@@ -68,7 +68,7 @@ public class MainViewModel extends ViewModel {
     }
     private void setMovies(List<Movie> movies) {
         setIsLoading(false);
-        movieList.postValue(movies);
+        this.movies.postValue(movies);
     }
 
     /**
