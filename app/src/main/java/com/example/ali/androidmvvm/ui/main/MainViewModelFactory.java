@@ -1,10 +1,9 @@
-package com.example.ali.androidmvvm.ui.activity.main;
+package com.example.ali.androidmvvm.ui.main;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.example.ali.androidmvvm.data.DataManager;
 import com.example.ali.androidmvvm.data.network.services.MovieService;
 
 /**

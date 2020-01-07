@@ -1,4 +1,4 @@
-package com.example.ali.androidmvvm.ui.activity.main;
+package com.example.ali.androidmvvm.ui.main;
 
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;

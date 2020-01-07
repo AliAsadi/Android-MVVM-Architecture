@@ -1,4 +1,4 @@
-package com.example.ali.androidmvvm.ui.activity.main;
+package com.example.ali.androidmvvm.ui.main;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.example.ali.androidmvp.R;
 import com.example.ali.androidmvvm.data.DataManager;
 import com.example.ali.androidmvvm.data.network.model.Movie;
-import com.example.ali.androidmvvm.ui.activity.details.DetailsActivity;
+import com.example.ali.androidmvvm.ui.details.DetailsActivity;
 
 import java.util.List;
 

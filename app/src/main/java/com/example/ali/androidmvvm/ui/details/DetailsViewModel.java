@@ -1,4 +1,4 @@
-package com.example.ali.androidmvvm.ui.activity.details;
+package com.example.ali.androidmvvm.ui.details;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;

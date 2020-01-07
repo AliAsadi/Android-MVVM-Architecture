@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.example.ali.androidmvvm.ui.activity.main.MainActivity">
+        <activity android:name="com.example.ali.androidmvvm.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.ali.androidmvvm.ui.activity.details.DetailsActivity" />
+        <activity android:name="com.example.ali.androidmvvm.ui.details.DetailsActivity" />
 
     </application>
 

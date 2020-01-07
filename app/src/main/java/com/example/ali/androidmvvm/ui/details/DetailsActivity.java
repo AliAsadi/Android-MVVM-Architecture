@@ -1,4 +1,4 @@
-package com.example.ali.androidmvvm.ui.activity.details;
+package com.example.ali.androidmvvm.ui.details;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
