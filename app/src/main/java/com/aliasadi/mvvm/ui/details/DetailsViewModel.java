@@ -10,22 +10,20 @@ import com.aliasadi.mvvm.data.network.model.Movie;
 /**
  * Created by Ali Asadi on 12/03/2018.
  */
-public class DetailsViewModel extends ViewModel {
+class DetailsViewModel extends ViewModel {
 
-    MutableLiveData<Movie> movie;
+    private MutableLiveData<Movie> movieLiveData = new MutableLiveData<>();
+    private Movie movie;
 
-    public DetailsViewModel() {
-        this.movie = new MutableLiveData<>();
+    DetailsViewModel(Movie movie) {
+        this.movie = movie;
     }
 
-    public void loadMovieData(Intent intent) {
-        assert intent.getExtras() != null;
-        Movie movieExtra = intent.getExtras().getParcelable("movie");
-
-        movie.postValue(movieExtra);
+    void loadMovieData() {
+        movieLiveData.postValue(movie);
     }
 
-    public MutableLiveData<Movie> getMovie() {
-        return movie;
+    MutableLiveData<Movie> getMovie() {
+        return movieLiveData;
     }
 }

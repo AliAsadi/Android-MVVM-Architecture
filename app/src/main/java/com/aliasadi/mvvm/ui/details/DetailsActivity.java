@@ -19,6 +19,8 @@ import butterknife.ButterKnife;
  */
 public class DetailsActivity extends AppCompatActivity {
 
+    private static final String EXTRA_MOVIE = "EXTRA_MOVIE";
+
     @BindView(R.id.image) AppCompatImageView image;
     @BindView(R.id.title) TextView title;
     @BindView(R.id.desc) TextView desc;
@@ -33,11 +35,13 @@ public class DetailsActivity extends AppCompatActivity {
 
         viewModel.getMovie().observe(this, new MovieObserver());
 
-        viewModel.loadMovieData(getIntent());
+        viewModel.loadMovieData();
     }
 
     private DetailsViewModel createViewModel() {
-        return ViewModelProviders.of(this).get(DetailsViewModel.class);
+        Movie movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
+        DetailsViewModelFactory factory = new DetailsViewModelFactory(movie);
+        return ViewModelProviders.of(this,factory).get(DetailsViewModel.class);
     }
 
     private class MovieObserver implements Observer<Movie> {
