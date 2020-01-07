@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
 
     @OnClick(R.id.empty)
     void onEmptyButtonClick() {
-        viewModel.showEmptyList();
+        viewModel.onEmptyClicked();
     }
 
     @Override

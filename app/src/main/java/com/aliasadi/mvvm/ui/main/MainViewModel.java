@@ -57,7 +57,7 @@ public class MainViewModel extends ViewModel {
         movies.add(new Movie(name,image,name));
         setMovies(movies);
     }
-    void showEmptyList() { setMovies(Collections.<Movie>emptyList()); }
+    void onEmptyClicked() { setMovies(Collections.<Movie>emptyList()); }
 
     private void setIsLoading(boolean loading) {
         isLoading.postValue(loading);
