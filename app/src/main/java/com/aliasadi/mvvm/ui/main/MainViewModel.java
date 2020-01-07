@@ -35,6 +35,7 @@ public class MainViewModel extends ViewModel {
     MutableLiveData<List<Movie>> getMovies() {
         return movieList;
     }
+
     MutableLiveData<Boolean> getLoadingStatus() {
         return isLoading;
     }
@@ -42,23 +43,26 @@ public class MainViewModel extends ViewModel {
     void loadMoviesNetwork() {
         setIsLoading(true);
 
-        Call<MovieResponse> movieCall = movieService.getMovieApi().getAllMovie();
-        movieCall.enqueue(new MovieCallback());
+        movieService.getMovieApi().getAllMovie().enqueue(new MovieCallback());
     }
     void loadMovieLocal() {
         setIsLoading(true);
 
+        setMovies(createLocalMovieList());
+    }
+    void onEmptyClicked() { setMovies(Collections.<Movie>emptyList()); }
+
+    private List<Movie> createLocalMovieList() {
         String name = "Breaking Bad";
-        String image = "https://coderwall-assets-0.s3.amazonaws.com/uploads/picture/file/622/breaking_bad_css3_svg_raw.png";
+        String image = "https://coderwall-assets-0.s3.amazonaws.com/" +
+                "uploads/picture/file/622/breaking_bad_css3_svg_raw.png";
 
         List<Movie> movies = new ArrayList<>();
         movies.add(new Movie(name,image,name));
         movies.add(new Movie(name,image,name));
         movies.add(new Movie(name,image,name));
-        setMovies(movies);
+        return movies;
     }
-    void onEmptyClicked() { setMovies(Collections.<Movie>emptyList()); }
-
     private void setIsLoading(boolean loading) {
         isLoading.postValue(loading);
     }
