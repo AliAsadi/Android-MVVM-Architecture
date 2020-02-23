@@ -28,7 +28,7 @@ import butterknife.OnClick;
  * Created by Ali Asadi on 12/03/2018.
  */
 
-public class MainActivity extends BaseActivity<MainViewModel> implements MovieAdapter.OnMovieAdapter {
+public class MainActivity extends BaseActivity<MainViewModel> implements MovieAdapter.MovieListener {
 
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
     @BindView(R.id.progress_bar) ProgressBar progressBar;

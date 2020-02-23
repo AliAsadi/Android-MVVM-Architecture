@@ -19,66 +19,70 @@ import butterknife.ButterKnife;
 /**
  * Created by Ali Asadi on 24/03/2018.
  */
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
-    public interface OnMovieAdapter{
+    public interface MovieListener {
         void onMovieClicked(Movie movie);
     }
 
-    private List<Movie> mItems;
-    private OnMovieAdapter mListener;
+    private List<Movie> items;
+    private MovieListener listener;
 
-    public MovieAdapter(OnMovieAdapter listener) {
-        mListener = listener;
-        mItems = new ArrayList<>();
+    public MovieAdapter(MovieListener listener) {
+        this.listener = listener;
+        items = new ArrayList<>();
     }
 
     public void setItems(List<Movie> items) {
-        mItems = items;
+        this.items = items;
         notifyDataSetChanged();
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie, parent, false);
-        return new ViewHolder(view);
+        return new MovieViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Movie movie = getItem(position);
-
-        holder.setOnClickListener(movie);
-        holder.setTitle(movie.getTitle());
-        holder.setImage(movie.getImage());
-        holder.setDescription(movie.getDescription());
+    public void onBindViewHolder(MovieViewHolder holder, int position) {
+        holder.bind(position);
     }
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return items.size();
     }
 
     private Movie getItem(int position) {
-        return mItems.get(position);
+        return items.get(position);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.image) AppCompatImageView image;
         @BindView(R.id.title) TextView title;
         @BindView(R.id.desc) TextView desc;
 
-        public ViewHolder(View itemView) {
+        MovieViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        public void setTitle(String title) {
+        void bind(int position) {
+            Movie movie = getItem(position);
+
+            setClickListener(movie);
+            setTitle(movie.getTitle());
+            setImage(movie.getImage());
+            setDescription(movie.getDescription());
+        }
+
+        private void setTitle(String title) {
             this.title.setText(title);
         }
 
-        public void setImage(String imageUrl) {
+        private void setImage(String imageUrl) {
             Glide.with(itemView.getContext()).load(imageUrl).into(image);
         }
 
@@ -86,14 +90,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             desc.setText(description);
         }
 
-        private void setOnClickListener(Movie movie) {
+        private void setClickListener(Movie movie) {
             itemView.setTag(movie);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            mListener.onMovieClicked((Movie) view.getTag());
+            listener.onMovieClicked((Movie) view.getTag());
         }
     }
 }
