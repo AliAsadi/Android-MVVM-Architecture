@@ -12,7 +12,7 @@ import retrofit2.http.GET;
  */
 public class MovieService {
 
-    private static final String URL = "http://demo6483760.mockable.io/";
+    private static final String URL = "http://demo2458961.mockable.io/";
 
     private MovieApi mMovieApi;
 
