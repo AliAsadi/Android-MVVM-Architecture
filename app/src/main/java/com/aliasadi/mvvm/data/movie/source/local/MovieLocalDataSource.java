@@ -13,8 +13,8 @@ import java.util.concurrent.Executor;
  */
 public class MovieLocalDataSource implements MovieDataSource {
 
-    private Executor executor;
-    private MovieDao movieDao;
+    private final Executor executor;
+    private final MovieDao movieDao;
 
     private static MovieLocalDataSource instance;
 

@@ -1,5 +1,7 @@
 package com.aliasadi.mvvm.utils;
 
+import android.support.annotation.NonNull;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -8,14 +10,14 @@ import java.util.concurrent.Executors;
  */
 public class DiskExecutor implements Executor {
 
-    private Executor diskExecutor;
+    private final Executor diskExecutor;
 
     public DiskExecutor() {
         this.diskExecutor = Executors.newSingleThreadExecutor();
     }
 
     @Override
-    public void execute(Runnable runnable) {
+    public void execute(@NonNull Runnable runnable) {
         diskExecutor.execute(runnable);
     }
 }

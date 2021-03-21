@@ -36,7 +36,14 @@ public class DetailsActivity extends BaseActivity<DetailsViewModel> {
         ButterKnife.bind(this);
 
         viewModel.loadMovieData();
-        viewModel.getMovie().observe(this, new MovieObserver());
+        viewModel.getMovie().observe(this, new Observer<Movie>() {
+            @Override
+            public void onChanged(@Nullable Movie movie) {
+                title.setText(movie.getTitle());
+                desc.setText(movie.getDescription());
+                Glide.with(getApplicationContext()).load(movie.getImage()).into(image);
+            }
+        });
     }
 
     @NonNull
@@ -52,17 +59,5 @@ public class DetailsActivity extends BaseActivity<DetailsViewModel> {
         starter.putExtra(EXTRA_MOVIE, movie);
         context.startActivity(starter);
     }
-
-    private class MovieObserver implements Observer<Movie> {
-        @Override
-        public void onChanged(@Nullable Movie movie) {
-            if (movie == null) return;
-
-            title.setText(movie.getTitle());
-            desc.setText(movie.getDescription());
-            Glide.with(getApplicationContext()).load(movie.getImage()).into(image);
-        }
-    }
-
 }
 

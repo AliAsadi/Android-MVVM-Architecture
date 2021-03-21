@@ -1,8 +1,6 @@
 package com.aliasadi.mvvm.ui.details;
 
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.content.Intent;
 
 import com.aliasadi.mvvm.data.movie.Movie;
 import com.aliasadi.mvvm.ui.base.BaseViewModel;
@@ -13,14 +11,14 @@ import com.aliasadi.mvvm.ui.base.BaseViewModel;
  */
 class DetailsViewModel extends BaseViewModel {
 
-    private MutableLiveData<Movie> movieLiveData = new MutableLiveData<>();
-    private Movie movie;
+    private final MutableLiveData<Movie> movieLiveData = new MutableLiveData<>();
+    private final Movie movie;
 
     DetailsViewModel(Movie movie) {
         this.movie = movie;
     }
 
-    void loadMovieData() {
+    public void loadMovieData() {
         movieLiveData.postValue(movie);
     }
 

@@ -26,7 +26,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     private List<Movie> items;
-    private MovieListener listener;
+    private final MovieListener listener;
 
     public MovieAdapter(MovieListener listener) {
         this.listener = listener;
