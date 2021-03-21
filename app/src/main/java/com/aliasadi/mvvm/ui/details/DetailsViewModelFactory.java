@@ -4,7 +4,8 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.aliasadi.mvvm.data.network.model.Movie;
+import com.aliasadi.mvvm.data.movie.Movie;
+
 
 /**
  * Created by Ali Asadi on 19/12/2018.

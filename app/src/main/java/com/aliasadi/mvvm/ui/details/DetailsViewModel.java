@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.content.Intent;
 
-import com.aliasadi.mvvm.data.network.model.Movie;
+import com.aliasadi.mvvm.data.movie.Movie;
 import com.aliasadi.mvvm.ui.base.BaseViewModel;
 
 

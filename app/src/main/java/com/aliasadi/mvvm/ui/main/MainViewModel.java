@@ -1,97 +1,103 @@
 package com.aliasadi.mvvm.ui.main;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.support.annotation.NonNull;
 
-import com.aliasadi.mvvm.data.network.model.Movie;
-import com.aliasadi.mvvm.data.network.model.MovieResponse;
-import com.aliasadi.mvvm.data.network.services.MovieService;
+import com.aliasadi.mvvm.data.movie.Movie;
+import com.aliasadi.mvvm.data.movie.source.MovieDataSource;
+import com.aliasadi.mvvm.data.movie.source.MoviesRepository;
 import com.aliasadi.mvvm.ui.base.BaseViewModel;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by Ali Asadi on 18/12/2018.
  */
 public class MainViewModel extends BaseViewModel {
 
-    private MutableLiveData<List<Movie>> movies;
-    private MutableLiveData<Boolean> isLoading;
+    private final MutableLiveData<List<Movie>> moviesLiveData = new MutableLiveData<>();
+    private final MutableLiveData<String> showErrorMessageLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Void> showLoadingLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Void> hideLoadingLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Movie> navigateToDetailsLiveData = new MutableLiveData<>();
 
-    private MovieService movieService;
+    private final MoviesRepository moviesRepository;
 
-    MainViewModel(MovieService movieService) {
-        this.movieService = movieService;
-        movies = new MutableLiveData<>();
-        isLoading = new MutableLiveData<>();
+    private final MovieCallback movieCallback = new MovieCallback();
+
+    MainViewModel(MoviesRepository moviesRepository) {
+        this.moviesRepository = moviesRepository;
     }
 
-    MutableLiveData<List<Movie>> getMovies() {
-        return movies;
-    }
-
-    MutableLiveData<Boolean> getLoadingStatus() {
-        return isLoading;
-    }
-
-    void loadMoviesNetwork() {
+    public void loadMovies() {
         setIsLoading(true);
-
-        movieService.getMovieApi().getAllMovie().enqueue(new MovieCallback());
+        moviesRepository.getMovies(movieCallback);
     }
-    void loadMovieLocal() {
-        setIsLoading(true);
 
-        setMovies(createLocalMovieList());
+    public void onEmptyClicked() {
+        setMoviesLiveData(Collections.<Movie>emptyList());
     }
-    void onEmptyClicked() { setMovies(Collections.<Movie>emptyList()); }
 
-    private List<Movie> createLocalMovieList() {
-        String name = "Breaking Bad";
-        String image = "https://coderwall-assets-0.s3.amazonaws.com/" +
-                "uploads/picture/file/622/breaking_bad_css3_svg_raw.png";
-
-        List<Movie> movies = new ArrayList<>();
-        movies.add(new Movie(name,image,name));
-        movies.add(new Movie(name,image,name));
-        movies.add(new Movie(name,image,name));
-        return movies;
-    }
     private void setIsLoading(boolean loading) {
-        isLoading.postValue(loading);
+        if (loading) {
+            showLoadingLiveData.postValue(null);
+        } else {
+            hideLoadingLiveData.postValue(null);
+        }
     }
-    private void setMovies(List<Movie> movies) {
+
+    private void setMoviesLiveData(List<Movie> moviesLiveData) {
         setIsLoading(false);
-        this.movies.postValue(movies);
+        this.moviesLiveData.postValue(moviesLiveData);
+    }
+
+    public void onMovieClicked(Movie movie) {
+        navigateToDetailsLiveData.postValue(movie);
     }
 
     /**
      * Callback
      **/
-    private class MovieCallback implements Callback<MovieResponse> {
-
+    private class MovieCallback implements MovieDataSource.LoadMoviesCallback {
         @Override
-        public void onResponse(@NonNull Call<MovieResponse> call, @NonNull Response<MovieResponse> response) {
-            MovieResponse movieResponse = response.body();
-
-            if (movieResponse != null) {
-                setMovies(movieResponse.getMovies());
-            } else {
-                setMovies(Collections.<Movie>emptyList());
-            }
+        public void onMoviesLoaded(List<Movie> movies) {
+            setMoviesLiveData(movies);
         }
 
         @Override
-        public void onFailure(Call<MovieResponse> call, Throwable t) {
-            setMovies(Collections.<Movie>emptyList());
-
+        public void onDataNotAvailable() {
+            setIsLoading(false);
+            showErrorMessageLiveData.postValue("There is not items!");
         }
+
+        @Override
+        public void onError() {
+            setIsLoading(false);
+            showErrorMessageLiveData.postValue("Something Went Wrong!");
+        }
+    }
+
+    /**
+     * LiveData
+     **/
+    public LiveData<List<Movie>> getMoviesLiveData() {
+        return moviesLiveData;
+    }
+
+    public LiveData<Void> getShowLoadingLiveData() {
+        return showLoadingLiveData;
+    }
+
+    public LiveData<String> getShowErrorMessageLiveData() {
+        return showErrorMessageLiveData;
+    }
+
+    public LiveData<Void> getHideLoadingLiveData() {
+        return hideLoadingLiveData;
+    }
+
+    public LiveData<Movie> getNavigateToDetailsLiveData() {
+        return navigateToDetailsLiveData;
     }
 }

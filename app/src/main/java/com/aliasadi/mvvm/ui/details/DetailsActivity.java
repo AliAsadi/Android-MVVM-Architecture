@@ -9,10 +9,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.widget.TextView;
+
+import com.aliasadi.mvvm.data.movie.Movie;
 import com.aliasadi.mvvm.ui.base.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.aliasadi.mvvm.R;
-import com.aliasadi.mvvm.data.network.model.Movie;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

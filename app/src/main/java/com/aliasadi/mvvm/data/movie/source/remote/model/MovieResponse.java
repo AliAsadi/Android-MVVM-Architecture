@@ -1,5 +1,6 @@
-package com.aliasadi.mvvm.data.network.model;
+package com.aliasadi.mvvm.data.movie.source.remote.model;
 
+import com.aliasadi.mvvm.data.movie.Movie;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -17,5 +18,9 @@ public class MovieResponse {
 
     public List<Movie> getMovies() {
         return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
 }

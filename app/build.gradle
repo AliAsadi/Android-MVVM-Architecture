@@ -53,7 +53,7 @@ dependencies {
     annotationProcessor 'android.arch.persistence.room:compiler:1.0.0'
 
     //power preference
-    implementation 'com.aliassadi:power-preference-lib:1.3.3'
+    implementation 'com.aliassadi:power-preference-lib:1.4.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

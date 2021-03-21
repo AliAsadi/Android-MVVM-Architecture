@@ -1,5 +1,8 @@
-package com.aliasadi.mvvm.data.network.model;
+package com.aliasadi.mvvm.data.movie;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,42 +12,36 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by Ali Asadi on 10/03/2018.
  */
+@Entity(tableName = "movies")
 public class Movie implements Parcelable{
+
+    @PrimaryKey
+    @ColumnInfo(name = "id")
+    private int id;
 
     @Expose
     @SerializedName("description")
+    @ColumnInfo(name = "description")
     private String description;
 
     @Expose
     @SerializedName("image")
+    @ColumnInfo(name = "image")
     private String image;
 
     @Expose
     @SerializedName("title")
+    @ColumnInfo(name = "title")
     private String title;
 
-    protected Movie(Parcel in) {
-        description = in.readString();
-        image = in.readString();
-        title = in.readString();
+    public Movie() {}
+
+    public int getId() {
+        return id;
     }
 
-    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
-        @Override
-        public Movie createFromParcel(Parcel in) {
-            return new Movie(in);
-        }
-
-        @Override
-        public Movie[] newArray(int size) {
-            return new Movie[size];
-        }
-    };
-
-    public Movie(String description, String image, String title) {
-        this.description = description;
-        this.image = image;
-        this.title = title;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescription() {
@@ -71,6 +68,23 @@ public class Movie implements Parcelable{
         this.title = title;
     }
 
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
+
+    protected Movie(Parcel in) {
+        description = in.readString();
+        image = in.readString();
+        title = in.readString();
+    }
 
     @Override
     public int describeContents() {
@@ -83,4 +97,5 @@ public class Movie implements Parcelable{
         parcel.writeString(image);
         parcel.writeString(title);
     }
+
 }

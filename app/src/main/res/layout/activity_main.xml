@@ -10,18 +10,11 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/network"
+            android:id="@+id/load"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="network" />
-
-        <Button
-            android:id="@+id/local"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="local" />
+            android:text="Load Movies" />
 
 
         <Button
@@ -40,15 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/empty_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="50dp"
-        android:gravity="center"
-        android:text="There is no item!"
-        android:visibility="visible" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
