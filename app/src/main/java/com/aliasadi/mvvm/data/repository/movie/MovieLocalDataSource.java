@@ -1,7 +1,7 @@
 package com.aliasadi.mvvm.data.repository.movie;
 
 import com.aliasadi.mvvm.data.db.MovieDao;
-import com.aliasadi.mvvm.data.model.Movie;
+import com.aliasadi.mvvm.data.domain.Movie;
 import com.aliasadi.mvvm.utils.DiskExecutor;
 
 import java.util.List;

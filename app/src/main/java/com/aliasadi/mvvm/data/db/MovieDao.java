@@ -5,7 +5,8 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import com.aliasadi.mvvm.data.model.Movie;
+import com.aliasadi.mvvm.data.domain.Movie;
+import com.aliasadi.mvvm.data.model.MovieRemote;
 
 import java.util.List;
 

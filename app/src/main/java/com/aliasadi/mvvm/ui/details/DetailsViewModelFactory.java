@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.aliasadi.mvvm.data.model.Movie;
+import com.aliasadi.mvvm.data.model.MovieRemote;
 
 
 /**
@@ -12,9 +12,9 @@ import com.aliasadi.mvvm.data.model.Movie;
  */
 public class DetailsViewModelFactory implements ViewModelProvider.Factory {
 
-    private final Movie movie;
+    private final MovieRemote movie;
 
-    public DetailsViewModelFactory(Movie movie) {
+    public DetailsViewModelFactory(MovieRemote movie) {
         this.movie = movie;
     }
 

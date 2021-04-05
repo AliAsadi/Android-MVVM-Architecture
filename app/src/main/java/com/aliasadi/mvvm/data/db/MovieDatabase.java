@@ -5,7 +5,8 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 
 import com.aliasadi.mvvm.App;
-import com.aliasadi.mvvm.data.model.Movie;
+import com.aliasadi.mvvm.data.domain.Movie;
+import com.aliasadi.mvvm.data.model.MovieRemote;
 
 /**
  * Created by Ali Asadi on 30/01/2019.

@@ -3,10 +3,9 @@ package com.aliasadi.mvvm.ui.main;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
-import com.aliasadi.mvvm.data.model.Movie;
-import com.aliasadi.mvvm.data.repository.movie.MovieDataSource;
+import com.aliasadi.mvvm.data.domain.Movie;
+import com.aliasadi.mvvm.data.model.MovieRemote;
 import com.aliasadi.mvvm.data.repository.movie.MovieRepository;
-import com.aliasadi.mvvm.data.repository.movie.MovieRepositoryImpl;
 import com.aliasadi.mvvm.ui.base.BaseViewModel;
 
 import java.util.Collections;

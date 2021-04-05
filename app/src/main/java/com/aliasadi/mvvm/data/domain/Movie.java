@@ -1,4 +1,4 @@
-package com.aliasadi.mvvm.data.model;
+package com.aliasadi.mvvm.data.domain;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Ali Asadi on 10/03/2018.
  */
 @Entity(tableName = "movies")
-public class Movie implements Parcelable{
+public class Movie implements Parcelable {
 
     @PrimaryKey
     @ColumnInfo(name = "id")
@@ -34,7 +34,12 @@ public class Movie implements Parcelable{
     @ColumnInfo(name = "title")
     private String title;
 
-    public Movie() {}
+    public Movie(int id, String description, String image, String title) {
+        this.id = id;
+        this.description = description;
+        this.image = image;
+        this.title = title;
+    }
 
     public int getId() {
         return id;

@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.aliasadi.mvvm.data.domain.Movie;
+import com.aliasadi.mvvm.data.model.MovieRemote;
 import com.bumptech.glide.Glide;
 import com.aliasadi.mvvm.R;
-import com.aliasadi.mvvm.data.model.Movie;
 
 import java.util.ArrayList;
 import java.util.List;

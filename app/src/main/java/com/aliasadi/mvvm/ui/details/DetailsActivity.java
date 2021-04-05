@@ -10,7 +10,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.widget.TextView;
 
-import com.aliasadi.mvvm.data.model.Movie;
+import com.aliasadi.mvvm.data.domain.Movie;
+import com.aliasadi.mvvm.data.model.MovieRemote;
 import com.aliasadi.mvvm.ui.base.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.aliasadi.mvvm.R;
@@ -36,9 +37,9 @@ public class DetailsActivity extends BaseActivity<DetailsViewModel> {
         ButterKnife.bind(this);
 
         viewModel.loadMovieData();
-        viewModel.getMovie().observe(this, new Observer<Movie>() {
+        viewModel.getMovie().observe(this, new Observer<MovieRemote>() {
             @Override
-            public void onChanged(@Nullable Movie movie) {
+            public void onChanged(@Nullable MovieRemote movie) {
                 title.setText(movie.getTitle());
                 desc.setText(movie.getDescription());
                 Glide.with(getApplicationContext()).load(movie.getImage()).into(image);
@@ -49,7 +50,7 @@ public class DetailsActivity extends BaseActivity<DetailsViewModel> {
     @NonNull
     @Override
     protected DetailsViewModel createViewModel() {
-        Movie movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
+        MovieRemote movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
         DetailsViewModelFactory factory = new DetailsViewModelFactory(movie);
         return ViewModelProviders.of(this,factory).get(DetailsViewModel.class);
     }

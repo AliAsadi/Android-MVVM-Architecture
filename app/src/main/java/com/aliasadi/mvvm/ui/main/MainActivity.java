@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import com.aliasadi.mvvm.R;
 import com.aliasadi.mvvm.data.DataManager;
-import com.aliasadi.mvvm.data.model.Movie;
+import com.aliasadi.mvvm.data.domain.Movie;
+import com.aliasadi.mvvm.data.model.MovieRemote;
 import com.aliasadi.mvvm.data.repository.movie.MovieRepository;
-import com.aliasadi.mvvm.data.repository.movie.MovieRepositoryImpl;
 import com.aliasadi.mvvm.ui.base.BaseActivity;
 import com.aliasadi.mvvm.ui.details.DetailsActivity;
 

@@ -2,7 +2,7 @@ package com.aliasadi.mvvm.data.repository.movie;
 
 import android.util.SparseArray;
 
-import com.aliasadi.mvvm.data.model.Movie;
+import com.aliasadi.mvvm.data.domain.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
