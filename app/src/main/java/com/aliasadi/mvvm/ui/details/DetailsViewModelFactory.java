@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.aliasadi.mvvm.data.movie.Movie;
+import com.aliasadi.mvvm.data.model.Movie;
 
 
 /**

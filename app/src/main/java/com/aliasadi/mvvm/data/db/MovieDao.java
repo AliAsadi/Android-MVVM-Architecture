@@ -1,11 +1,11 @@
-package com.aliasadi.mvvm.data.movie.source.local.dao;
+package com.aliasadi.mvvm.data.db;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import com.aliasadi.mvvm.data.movie.Movie;
+import com.aliasadi.mvvm.data.model.Movie;
 
 import java.util.List;
 

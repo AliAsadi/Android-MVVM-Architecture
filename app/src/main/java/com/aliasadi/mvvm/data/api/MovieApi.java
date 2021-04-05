@@ -1,6 +1,6 @@
-package com.aliasadi.mvvm.data.movie.source.remote.services;
+package com.aliasadi.mvvm.data.api;
 
-import com.aliasadi.mvvm.data.movie.source.remote.model.MovieResponse;
+import com.aliasadi.mvvm.data.model.MovieResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

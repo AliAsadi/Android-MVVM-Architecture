@@ -4,16 +4,17 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.aliasadi.mvvm.data.movie.source.MoviesRepository;
+import com.aliasadi.mvvm.data.repository.movie.MovieRepository;
+import com.aliasadi.mvvm.data.repository.movie.MovieRepositoryImpl;
 
 /**
  * Created by Ali Asadi on 19/12/2018.
  */
 public class MainViewModelFactory implements ViewModelProvider.Factory {
 
-    private final MoviesRepository moviesRepository;
+    private final MovieRepository moviesRepository;
 
-    public MainViewModelFactory(MoviesRepository moviesRepository) {
+    public MainViewModelFactory(MovieRepository moviesRepository) {
         this.moviesRepository = moviesRepository;
     }
 

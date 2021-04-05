@@ -1,8 +1,7 @@
-package com.aliasadi.mvvm.data.movie.source.local;
+package com.aliasadi.mvvm.data.repository.movie;
 
-import com.aliasadi.mvvm.data.movie.Movie;
-import com.aliasadi.mvvm.data.movie.source.MovieDataSource;
-import com.aliasadi.mvvm.data.movie.source.local.dao.MovieDao;
+import com.aliasadi.mvvm.data.db.MovieDao;
+import com.aliasadi.mvvm.data.model.Movie;
 import com.aliasadi.mvvm.utils.DiskExecutor;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.concurrent.Executor;
 /**
  * Created by Ali Asadi on 30/01/2019.
  */
-public class MovieLocalDataSource implements MovieDataSource {
+public class MovieLocalDataSource implements MovieDataSource.Local {
 
     private final Executor executor;
     private final MovieDao movieDao;
@@ -31,7 +30,7 @@ public class MovieLocalDataSource implements MovieDataSource {
     }
 
     @Override
-    public void getMovies(final LoadMoviesCallback callback) {
+    public void getMovies(final MovieRepository.LoadMoviesCallback callback) {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {

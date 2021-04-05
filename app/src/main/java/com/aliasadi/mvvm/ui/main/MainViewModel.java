@@ -3,9 +3,10 @@ package com.aliasadi.mvvm.ui.main;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
-import com.aliasadi.mvvm.data.movie.Movie;
-import com.aliasadi.mvvm.data.movie.source.MovieDataSource;
-import com.aliasadi.mvvm.data.movie.source.MoviesRepository;
+import com.aliasadi.mvvm.data.model.Movie;
+import com.aliasadi.mvvm.data.repository.movie.MovieDataSource;
+import com.aliasadi.mvvm.data.repository.movie.MovieRepository;
+import com.aliasadi.mvvm.data.repository.movie.MovieRepositoryImpl;
 import com.aliasadi.mvvm.ui.base.BaseViewModel;
 
 import java.util.Collections;
@@ -22,11 +23,11 @@ public class MainViewModel extends BaseViewModel {
     private final MutableLiveData<Void> hideLoadingLiveData = new MutableLiveData<>();
     private final MutableLiveData<Movie> navigateToDetailsLiveData = new MutableLiveData<>();
 
-    private final MoviesRepository moviesRepository;
+    private final MovieRepository moviesRepository;
 
     private final MovieCallback movieCallback = new MovieCallback();
 
-    MainViewModel(MoviesRepository moviesRepository) {
+    MainViewModel(MovieRepository moviesRepository) {
         this.moviesRepository = moviesRepository;
     }
 
@@ -59,7 +60,7 @@ public class MainViewModel extends BaseViewModel {
     /**
      * Callback
      **/
-    private class MovieCallback implements MovieDataSource.LoadMoviesCallback {
+    private class MovieCallback implements MovieRepository.LoadMoviesCallback {
         @Override
         public void onMoviesLoaded(List<Movie> movies) {
             setMoviesLiveData(movies);

@@ -1,4 +1,4 @@
-package com.aliasadi.mvvm.data.movie;
+package com.aliasadi.mvvm.data.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

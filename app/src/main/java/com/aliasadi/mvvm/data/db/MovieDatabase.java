@@ -1,12 +1,11 @@
-package com.aliasadi.mvvm.data.movie.source.local.database;
+package com.aliasadi.mvvm.data.db;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 
 import com.aliasadi.mvvm.App;
-import com.aliasadi.mvvm.data.movie.Movie;
-import com.aliasadi.mvvm.data.movie.source.local.dao.MovieDao;
+import com.aliasadi.mvvm.data.model.Movie;
 
 /**
  * Created by Ali Asadi on 30/01/2019.

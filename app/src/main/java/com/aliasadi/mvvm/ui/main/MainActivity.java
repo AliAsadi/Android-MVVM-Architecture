@@ -8,13 +8,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aliasadi.mvvm.R;
 import com.aliasadi.mvvm.data.DataManager;
-import com.aliasadi.mvvm.data.movie.Movie;
-import com.aliasadi.mvvm.data.movie.source.MoviesRepository;
+import com.aliasadi.mvvm.data.model.Movie;
+import com.aliasadi.mvvm.data.repository.movie.MovieRepository;
+import com.aliasadi.mvvm.data.repository.movie.MovieRepositoryImpl;
 import com.aliasadi.mvvm.ui.base.BaseActivity;
 import com.aliasadi.mvvm.ui.details.DetailsActivity;
 
@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MovieAd
     @NonNull
     @Override
     protected MainViewModel createViewModel() {
-        MoviesRepository movieRepository = DataManager.getInstance().getMovieRepository();
+        MovieRepository movieRepository = DataManager.getInstance().getMovieRepository();
         MainViewModelFactory factory = new MainViewModelFactory(movieRepository);
         return ViewModelProviders.of(this, factory).get(MainViewModel.class);
     }

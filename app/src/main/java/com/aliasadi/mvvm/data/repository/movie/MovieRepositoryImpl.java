@@ -1,46 +1,43 @@
-package com.aliasadi.mvvm.data.movie.source;
+package com.aliasadi.mvvm.data.repository.movie;
 
-import com.aliasadi.mvvm.data.movie.Movie;
-import com.aliasadi.mvvm.data.movie.source.local.MovieCacheDataSource;
-import com.aliasadi.mvvm.data.movie.source.local.MovieLocalDataSource;
-import com.aliasadi.mvvm.data.movie.source.remote.MovieRemoteDataSource;
+import com.aliasadi.mvvm.data.model.Movie;
 
 import java.util.List;
 
 /**
  * Created by Ali Asadi on 29/01/2019.
  */
-public class MoviesRepository implements MovieDataSource {
+public class MovieRepositoryImpl implements MovieRepository {
 
-    private final MovieDataSource movieRemote;
-    private final MovieDataSource movieLocal;
-    private final MovieDataSource movieCache;
+    private final MovieDataSource.Remote movieRemote;
+    private final MovieDataSource.Local movieLocal;
+    private final MovieDataSource.Local movieCache;
 
-    private static MoviesRepository instance;
+    private static MovieRepositoryImpl instance;
 
-    private MoviesRepository(MovieRemoteDataSource movieRemote,
-                             MovieLocalDataSource movieLocal,
-                             MovieCacheDataSource movieCache) {
+    private MovieRepositoryImpl(MovieRemoteDataSource movieRemote,
+                                MovieLocalDataSource movieLocal,
+                                MovieCacheDataSource movieCache) {
 
         this.movieRemote = movieRemote;
         this.movieLocal = movieLocal;
         this.movieCache = movieCache;
     }
 
-    public static MoviesRepository getInstance(MovieRemoteDataSource movieRemote,
-                                               MovieLocalDataSource movieLocal,
-                                               MovieCacheDataSource movieCache) {
+    public static MovieRepositoryImpl getInstance(MovieRemoteDataSource movieRemote,
+                                                  MovieLocalDataSource movieLocal,
+                                                  MovieCacheDataSource movieCache) {
         if (instance == null) {
-            instance = new MoviesRepository(movieRemote, movieLocal, movieCache);
+            instance = new MovieRepositoryImpl(movieRemote, movieLocal, movieCache);
         }
         return instance;
     }
 
     @Override
-    public void getMovies(final LoadMoviesCallback callback) {
+    public void getMovies(final MovieRepository.LoadMoviesCallback callback) {
         if (callback == null) return;
 
-        movieCache.getMovies(new LoadMoviesCallback() {
+        movieCache.getMovies(new MovieRepository.LoadMoviesCallback() {
             @Override
             public void onMoviesLoaded(List<Movie> movies) {
                 callback.onMoviesLoaded(movies);
@@ -64,8 +61,8 @@ public class MoviesRepository implements MovieDataSource {
         movieLocal.saveMovies(movies);
     }
 
-    private void getMoviesFromLocalDataSource(final LoadMoviesCallback callback) {
-        movieLocal.getMovies(new LoadMoviesCallback() {
+    private void getMoviesFromLocalDataSource(final MovieRepository.LoadMoviesCallback callback) {
+        movieLocal.getMovies(new MovieRepository.LoadMoviesCallback() {
             @Override
             public void onMoviesLoaded(List<Movie> movies) {
                 callback.onMoviesLoaded(movies);
@@ -84,8 +81,8 @@ public class MoviesRepository implements MovieDataSource {
         });
     }
 
-    private void getMoviesFromRemoteDataSource(final LoadMoviesCallback callback) {
-        movieRemote.getMovies(new LoadMoviesCallback() {
+    private void getMoviesFromRemoteDataSource(final MovieRepository.LoadMoviesCallback callback) {
+        movieRemote.getMovies(new MovieRepository.LoadMoviesCallback() {
             @Override
             public void onMoviesLoaded(List<Movie> movies) {
                 callback.onMoviesLoaded(movies);
@@ -107,9 +104,5 @@ public class MoviesRepository implements MovieDataSource {
 
     private void refreshCache(List<Movie> movies) {
         movieCache.saveMovies(movies);
-    }
-
-    public void destroyInstance() {
-        instance = null;
     }
 }

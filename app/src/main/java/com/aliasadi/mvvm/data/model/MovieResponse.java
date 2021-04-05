@@ -1,6 +1,6 @@
-package com.aliasadi.mvvm.data.movie.source.remote.model;
+package com.aliasadi.mvvm.data.model;
 
-import com.aliasadi.mvvm.data.movie.Movie;
+import com.aliasadi.mvvm.data.model.Movie;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

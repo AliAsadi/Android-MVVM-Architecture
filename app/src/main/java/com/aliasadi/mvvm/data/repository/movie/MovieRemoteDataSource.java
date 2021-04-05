@@ -1,9 +1,8 @@
-package com.aliasadi.mvvm.data.movie.source.remote;
+package com.aliasadi.mvvm.data.repository.movie;
 
-import com.aliasadi.mvvm.data.movie.source.MovieDataSource;
-import com.aliasadi.mvvm.data.movie.Movie;
-import com.aliasadi.mvvm.data.movie.source.remote.model.MovieResponse;
-import com.aliasadi.mvvm.data.movie.source.remote.services.MovieApi;
+import com.aliasadi.mvvm.data.api.MovieApi;
+import com.aliasadi.mvvm.data.model.Movie;
+import com.aliasadi.mvvm.data.model.MovieResponse;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MovieRemoteDataSource implements MovieDataSource {
+public class MovieRemoteDataSource implements MovieDataSource.Remote {
 
     private static MovieRemoteDataSource instance;
 
@@ -29,7 +28,7 @@ public class MovieRemoteDataSource implements MovieDataSource {
     }
 
     @Override
-    public void getMovies(final LoadMoviesCallback callback) {
+    public void getMovies(final MovieRepository.LoadMoviesCallback callback) {
         movieApi.getMovies().enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
@@ -46,10 +45,5 @@ public class MovieRemoteDataSource implements MovieDataSource {
                 callback.onError();
             }
         });
-    }
-
-    @Override
-    public void saveMovies(List<Movie> movies) {
-        //doNothing
     }
 }

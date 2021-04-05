@@ -1,9 +1,8 @@
-package com.aliasadi.mvvm.data.movie.source.local;
+package com.aliasadi.mvvm.data.repository.movie;
 
 import android.util.SparseArray;
 
-import com.aliasadi.mvvm.data.movie.Movie;
-import com.aliasadi.mvvm.data.movie.source.MovieDataSource;
+import com.aliasadi.mvvm.data.model.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 /**
  * Created by Ali Asadi on 30/01/2019.
  */
-public class MovieCacheDataSource implements MovieDataSource {
+public class MovieCacheDataSource implements MovieDataSource.Local {
 
     private static MovieCacheDataSource sInstance;
 
@@ -25,7 +24,7 @@ public class MovieCacheDataSource implements MovieDataSource {
     }
 
     @Override
-    public void getMovies(LoadMoviesCallback callback) {
+    public void getMovies(MovieRepository.LoadMoviesCallback callback) {
 
         if (cachedMovies.size() > 0) {
             List<Movie> movies = new ArrayList<>();

@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.widget.TextView;
 
-import com.aliasadi.mvvm.data.movie.Movie;
+import com.aliasadi.mvvm.data.model.Movie;
 import com.aliasadi.mvvm.ui.base.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.aliasadi.mvvm.R;

@@ -2,7 +2,7 @@ package com.aliasadi.mvvm.ui.details;
 
 import android.arch.lifecycle.MutableLiveData;
 
-import com.aliasadi.mvvm.data.movie.Movie;
+import com.aliasadi.mvvm.data.model.Movie;
 import com.aliasadi.mvvm.ui.base.BaseViewModel;
 
 

@@ -1,13 +1,14 @@
 package com.aliasadi.mvvm.data;
 
-import com.aliasadi.mvvm.data.movie.source.MoviesRepository;
-import com.aliasadi.mvvm.data.movie.source.local.MovieCacheDataSource;
-import com.aliasadi.mvvm.data.movie.source.local.MovieLocalDataSource;
-import com.aliasadi.mvvm.data.movie.source.local.dao.MovieDao;
-import com.aliasadi.mvvm.data.movie.source.local.database.MovieDatabase;
-import com.aliasadi.mvvm.data.movie.source.remote.MovieRemoteDataSource;
-import com.aliasadi.mvvm.data.movie.source.remote.services.MovieApi;
-import com.aliasadi.mvvm.data.movie.source.remote.services.MovieService;
+import com.aliasadi.mvvm.data.repository.movie.MovieRepository;
+import com.aliasadi.mvvm.data.repository.movie.MovieRepositoryImpl;
+import com.aliasadi.mvvm.data.repository.movie.MovieCacheDataSource;
+import com.aliasadi.mvvm.data.repository.movie.MovieLocalDataSource;
+import com.aliasadi.mvvm.data.db.MovieDao;
+import com.aliasadi.mvvm.data.db.MovieDatabase;
+import com.aliasadi.mvvm.data.repository.movie.MovieRemoteDataSource;
+import com.aliasadi.mvvm.data.api.MovieApi;
+import com.aliasadi.mvvm.data.service.MovieService;
 import com.preference.PowerPreference;
 import com.preference.Preference;
 
@@ -34,7 +35,7 @@ public class DataManager {
         return PowerPreference.getDefaultFile();
     }
 
-    public MoviesRepository getMovieRepository() {
+    public MovieRepository getMovieRepository() {
 
         MovieApi movieApi = MovieService.getInstance().getMovieApi();
         MovieRemoteDataSource movieRemote = MovieRemoteDataSource.getInstance(movieApi);
@@ -44,7 +45,7 @@ public class DataManager {
 
         MovieCacheDataSource movieCache = MovieCacheDataSource.getsInstance();
 
-        return MoviesRepository.getInstance(movieRemote,movieLocal,movieCache);
+        return MovieRepositoryImpl.getInstance(movieRemote,movieLocal,movieCache);
     }
 
 }

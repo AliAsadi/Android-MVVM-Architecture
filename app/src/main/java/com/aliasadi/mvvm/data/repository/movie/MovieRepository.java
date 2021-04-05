@@ -1,13 +1,13 @@
-package com.aliasadi.mvvm.data.movie.source;
+package com.aliasadi.mvvm.data.repository.movie;
 
-import com.aliasadi.mvvm.data.movie.Movie;
+import com.aliasadi.mvvm.data.model.Movie;
 
 import java.util.List;
 
 /**
- * Created by Ali Asadi on 30/01/2019.
+ * Created by Ali Asadi on 05/04/2021
  */
-public interface MovieDataSource {
+public interface MovieRepository {
 
     interface LoadMoviesCallback {
         void onMoviesLoaded(List<Movie> movies);
