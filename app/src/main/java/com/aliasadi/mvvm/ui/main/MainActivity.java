@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MovieAd
         viewModel.getShowErrorMessageLiveData().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String message) {
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             }
         });
     }
