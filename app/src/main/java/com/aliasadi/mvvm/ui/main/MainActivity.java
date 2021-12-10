@@ -5,35 +5,24 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.aliasadi.mvvm.R;
 import com.aliasadi.mvvm.data.DataManager;
 import com.aliasadi.mvvm.data.domain.Movie;
-import com.aliasadi.mvvm.data.model.MovieRemote;
 import com.aliasadi.mvvm.data.repository.movie.MovieRepository;
+import com.aliasadi.mvvm.databinding.ActivityMainBinding;
 import com.aliasadi.mvvm.ui.base.BaseActivity;
 import com.aliasadi.mvvm.ui.details.DetailsActivity;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * Created by Ali Asadi on 12/03/2018.
  */
 
-public class MainActivity extends BaseActivity<MainViewModel> implements MovieAdapter.MovieListener {
-
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
-    @BindView(R.id.progress_bar)
-    ProgressBar progressBar;
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> implements MovieAdapter.MovieListener {
 
     private MovieAdapter movieAdapter;
 
@@ -45,30 +34,50 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MovieAd
         return ViewModelProviders.of(this, factory).get(MainViewModel.class);
     }
 
+    @NonNull
+    @Override
+    protected ActivityMainBinding createViewBinding(LayoutInflater layoutInflater) {
+        return ActivityMainBinding.inflate(layoutInflater);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-
         movieAdapter = new MovieAdapter(this);
-        recyclerView.setAdapter(movieAdapter);
+        binding.recyclerView.setAdapter(movieAdapter);
 
+        setListeners();
         observeViewModel();
+    }
+
+    private void setListeners() {
+        binding.load.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.loadMovies();
+            }
+        });
+
+        binding.empty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.onEmptyClicked();
+            }
+        });
     }
 
     private void observeViewModel() {
         viewModel.getShowLoadingLiveData().observe(this, new Observer<Void>() {
             @Override
             public void onChanged(@Nullable Void aVoid) {
-                progressBar.setVisibility(View.VISIBLE);
+                binding.progressBar.setVisibility(View.VISIBLE);
             }
         });
 
         viewModel.getHideLoadingLiveData().observe(this, new Observer<Void>() {
             @Override
             public void onChanged(@Nullable Void aVoid) {
-                progressBar.setVisibility(View.GONE);
+                binding.progressBar.setVisibility(View.GONE);
             }
         });
 
@@ -92,16 +101,6 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MovieAd
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    @OnClick(R.id.load)
-    void onLoadMoviesButtonClick() {
-        viewModel.loadMovies();
-    }
-
-    @OnClick(R.id.empty)
-    void onEmptyButtonClick() {
-        viewModel.onEmptyClicked();
     }
 
     @Override

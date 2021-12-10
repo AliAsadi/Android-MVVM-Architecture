@@ -1,22 +1,14 @@
 package com.aliasadi.mvvm.ui.main;
 
-import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.aliasadi.mvvm.data.domain.Movie;
-import com.aliasadi.mvvm.data.model.MovieRemote;
+import com.aliasadi.mvvm.databinding.ItemMovieBinding;
 import com.bumptech.glide.Glide;
-import com.aliasadi.mvvm.R;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by Ali Asadi on 24/03/2018.
@@ -42,8 +34,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie, parent, false);
-        return new MovieViewHolder(view);
+        ItemMovieBinding binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new MovieViewHolder(binding);
     }
 
     @Override
@@ -62,13 +54,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.image) AppCompatImageView image;
-        @BindView(R.id.title) TextView title;
-        @BindView(R.id.desc) TextView desc;
-
-        MovieViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
+        ItemMovieBinding binding;
+        MovieViewHolder(ItemMovieBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
         void bind(int position) {
@@ -81,15 +70,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         }
 
         private void setTitle(String title) {
-            this.title.setText(title);
+            binding.title.setText(title);
         }
 
         private void setImage(String imageUrl) {
-            Glide.with(itemView.getContext()).load(imageUrl).into(image);
+            Glide.with(itemView.getContext()).load(imageUrl).into(binding.image);
         }
 
         private void setDescription(String description) {
-            desc.setText(description);
+            binding.desc.setText(description);
         }
 
         private void setClickListener(Movie movie) {
