@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidMvvm</string>
+    <string name="load_movies">Load Movies</string>
+    <string name="empty">empty</string>
 </resources>

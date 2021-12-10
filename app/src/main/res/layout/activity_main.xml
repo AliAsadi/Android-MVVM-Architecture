@@ -11,21 +11,21 @@
 
         <Button
             android:id="@+id/load"
+            style="@style/Theme.AppCompat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Load Movies" />
-
+            android:text="@string/load_movies" />
 
         <Button
             android:id="@+id/empty"
+            style="@style/Theme.AppCompat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="empty" />
+            android:text="@string/empty" />
 
     </LinearLayout>
-
 
     <ProgressBar
         android:id="@+id/progress_bar"

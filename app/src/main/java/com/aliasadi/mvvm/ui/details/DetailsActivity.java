@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import com.aliasadi.mvvm.R;
 import com.aliasadi.mvvm.data.domain.Movie;
 import com.aliasadi.mvvm.databinding.ActivityDetailsBinding;
 import com.aliasadi.mvvm.ui.base.BaseActivity;

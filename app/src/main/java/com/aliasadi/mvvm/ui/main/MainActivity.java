@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
-import com.aliasadi.mvvm.R;
 import com.aliasadi.mvvm.data.DataManager;
 import com.aliasadi.mvvm.data.domain.Movie;
 import com.aliasadi.mvvm.data.repository.movie.MovieRepository;
