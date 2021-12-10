@@ -2,6 +2,7 @@ package com.aliasadi.mvvm.ui.details;
 
 import android.arch.lifecycle.MutableLiveData;
 
+import com.aliasadi.mvvm.data.domain.Movie;
 import com.aliasadi.mvvm.data.model.MovieRemote;
 import com.aliasadi.mvvm.ui.base.BaseViewModel;
 
@@ -11,10 +12,10 @@ import com.aliasadi.mvvm.ui.base.BaseViewModel;
  */
 class DetailsViewModel extends BaseViewModel {
 
-    private final MutableLiveData<MovieRemote> movieLiveData = new MutableLiveData<>();
-    private final MovieRemote movie;
+    private final MutableLiveData<Movie> movieLiveData = new MutableLiveData<>();
+    private final Movie movie;
 
-    DetailsViewModel(MovieRemote movie) {
+    DetailsViewModel(Movie movie) {
         this.movie = movie;
     }
 
@@ -22,7 +23,7 @@ class DetailsViewModel extends BaseViewModel {
         movieLiveData.postValue(movie);
     }
 
-    MutableLiveData<MovieRemote> getMovie() {
+    MutableLiveData<Movie> getMovie() {
         return movieLiveData;
     }
 }

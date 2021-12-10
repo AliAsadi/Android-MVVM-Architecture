@@ -37,9 +37,9 @@ public class DetailsActivity extends BaseActivity<DetailsViewModel> {
         ButterKnife.bind(this);
 
         viewModel.loadMovieData();
-        viewModel.getMovie().observe(this, new Observer<MovieRemote>() {
+        viewModel.getMovie().observe(this, new Observer<Movie>() {
             @Override
-            public void onChanged(@Nullable MovieRemote movie) {
+            public void onChanged(@Nullable Movie movie) {
                 title.setText(movie.getTitle());
                 desc.setText(movie.getDescription());
                 Glide.with(getApplicationContext()).load(movie.getImage()).into(image);
@@ -50,7 +50,7 @@ public class DetailsActivity extends BaseActivity<DetailsViewModel> {
     @NonNull
     @Override
     protected DetailsViewModel createViewModel() {
-        MovieRemote movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
+        Movie movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
         DetailsViewModelFactory factory = new DetailsViewModelFactory(movie);
         return ViewModelProviders.of(this,factory).get(DetailsViewModel.class);
     }
